@@ -122,6 +122,7 @@ C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Ser
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\obj\Debug\net8.0\Mango.Services.CouponApi.csproj.CoreCompileInputs.cache
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\obj\Debug\net8.0\Mango.Services.CouponApi.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\obj\Debug\net8.0\Mango.Services.CouponApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\obj\Debug\net8.0\Mango.Services.CouponApi.sourcelink.json
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\obj\Debug\net8.0\staticwebassets\msbuild.Mango.Services.CouponApi.Microsoft.AspNetCore.StaticWebAssets.props
@@ -136,4 +137,3 @@ C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Ser
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\obj\Debug\net8.0\Mango.Services.CouponApi.pdb
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\obj\Debug\net8.0\Mango.Services.CouponApi.genruntimeconfig.cache
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\obj\Debug\net8.0\ref\Mango.Services.CouponApi.dll
-C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\obj\Debug\net8.0\Mango.Services.CouponApi.sourcelink.json

@@ -1,56 +1,58 @@
-﻿using Mango.Services.CouponApi.Common;
+﻿using AutoMapper;
+using Mango.Services.CouponApi.Common;
 using Mango.Services.CouponApi.Interfaces;
 using Mango.Services.CouponApi.Models;
+using Mango.Services.CouponApi.Models.Dto;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
 namespace Mango.Services.CouponApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/coupons")]
     [ApiController]
-    public class CouponAPIController(ICouponRepository couponRepository) : ControllerBase
+    public class CouponAPIController(ICouponRepository couponRepository, IMapper mapper) : ControllerBase
     {
         private readonly ICouponRepository _couponRepository = couponRepository;
+        private readonly IMapper _mapper = mapper;
 
         [HttpGet]
-        [Route("coupons")]
         public ResponseDto GetAllCoupons()
         {
             return new ResponseDto
             {
-                Body = _couponRepository.GetAllCoupons()
+                Body = _mapper.Map<IEnumerable<CouponDto>>(_couponRepository.GetAllCoupons())
             };
         }
 
         [HttpGet]
-        [Route("coupons/ids/{couponId:int}")]
+        [Route("{couponId:int}")]
         public ResponseDto GetCouponById(int couponId)
         {
             Coupon? couponById = _couponRepository.GetCouponById(couponId);
             return new ResponseDto
             {
                 StatusCode = couponById == null ? HttpStatusCode.NotFound : HttpStatusCode.OK,
-                Body = couponById
+                Body = _mapper.Map<CouponDto>(couponById)
             };
         }
 
         [HttpGet]
-        [Route("coupons/codes/{couponCode}")]
+        [Route("by-code/{couponCode}")]
         public ResponseDto GetCouponByCode(string couponCode)
         {
             Coupon? couponByCode = _couponRepository.GetCouponByCode(couponCode);
             return new ResponseDto
             {
                 StatusCode = couponByCode == null ? HttpStatusCode.NotFound : HttpStatusCode.OK,
-                Body = couponByCode
+                Body = _mapper.Map<CouponDto>(couponByCode)
             };
         }
 
         [HttpPost]
-        [Route("coupons")]
-        public ResponseDto CreateCoupon([FromBody] Coupon coupon)
+        public ResponseDto CreateCoupon([FromBody] CouponDto couponDto)
         {
-            _couponRepository.CreateCoupon(coupon);
+            Coupon couponToCreate = _mapper.Map<Coupon>(couponDto);
+            _couponRepository.CreateCoupon(couponToCreate);
             return new ResponseDto
             {
                 StatusCode = HttpStatusCode.NoContent
@@ -58,19 +60,20 @@ namespace Mango.Services.CouponApi.Controllers
         }
 
         [HttpPut]
-        [Route("coupons/{couponId:int}")]
-        public ResponseDto UpdateCoupon(int couponId, [FromBody] Coupon coupon)
+        [Route("{couponId:int}")]
+        public ResponseDto UpdateCoupon(int couponId, [FromBody] CouponDto couponDto)
         {
-            if (couponId != coupon.CouponId)
+            if (couponId != couponDto.CouponId)
                 return new ResponseDto { StatusCode = HttpStatusCode.BadRequest };
 
             try
             {
-                _couponRepository.UpdateCoupon(coupon);
+                Coupon couponToUpdate = _mapper.Map<Coupon>(couponDto);
+                _couponRepository.UpdateCoupon(couponToUpdate);
                 return new ResponseDto
                 {
                     StatusCode = HttpStatusCode.NoContent,
-                    Body = coupon
+                    Body = couponDto
                 };
             }
             catch (Exception ex)
@@ -84,7 +87,7 @@ namespace Mango.Services.CouponApi.Controllers
         }
 
         [HttpDelete]
-        [Route("coupons/{couponId:int}")]
+        [Route("{couponId:int}")]
         public ResponseDto DeleteCoupon(int couponId)
         {
             try

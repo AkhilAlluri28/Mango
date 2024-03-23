@@ -24,8 +24,9 @@ namespace Mango.Services.CouponApi.Repositories
         /// <inherit />
         public Coupon? GetCouponByCode(string code)
         {
-            return _db.Coupons.FirstOrDefault(c=> string.Equals(c.CouponCode, code, 
-                StringComparison.OrdinalIgnoreCase));
+            //return _db.Coupons.FirstOrDefault(c=> string.Equals(c.CouponCode, code, 
+            //    StringComparison.OrdinalIgnoreCase));
+            return _db.Coupons.FirstOrDefault(c => c.CouponCode == code);
         }
 
         /// <inherit />
