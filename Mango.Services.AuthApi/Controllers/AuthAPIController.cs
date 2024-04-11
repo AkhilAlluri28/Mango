@@ -1,6 +1,5 @@
 ﻿using Mango.Services.AuthApi.Interfaces;
 using Mango.Services.AuthApi.Models;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
