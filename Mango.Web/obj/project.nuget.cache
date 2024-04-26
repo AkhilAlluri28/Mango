@@ -1,10 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "YNFWJxYGh5Jbjaw8hWP24UWliiKrz8AyCRLsWg+izlHypXkeBR8tbBeETI2AB9HsiZUrm7R3N1GAzu8sBv+tpw==",
+  "dgSpecHash": "0L9SeVnFe+6sUa/g+7Udi++hgyemh4eg2JxH4doxMmyJPtP178+oTkIn8YsuXzqNlQgxZv/6TLplcwibvZSQmQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\saisr\\OneDrive\\Documents\\Projects\\NetCore_MicroServices\\Mango\\Mango.Web\\Mango.Web.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\saisr\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+    "C:\\Users\\saisr\\.nuget\\packages\\microsoft.identitymodel.abstractions\\7.1.2\\microsoft.identitymodel.abstractions.7.1.2.nupkg.sha512",
+    "C:\\Users\\saisr\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\7.1.2\\microsoft.identitymodel.jsonwebtokens.7.1.2.nupkg.sha512",
+    "C:\\Users\\saisr\\.nuget\\packages\\microsoft.identitymodel.logging\\7.1.2\\microsoft.identitymodel.logging.7.1.2.nupkg.sha512",
+    "C:\\Users\\saisr\\.nuget\\packages\\microsoft.identitymodel.tokens\\7.1.2\\microsoft.identitymodel.tokens.7.1.2.nupkg.sha512",
+    "C:\\Users\\saisr\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\saisr\\.nuget\\packages\\system.identitymodel.tokens.jwt\\7.1.2\\system.identitymodel.tokens.jwt.7.1.2.nupkg.sha512"
   ],
   "logs": []
 }

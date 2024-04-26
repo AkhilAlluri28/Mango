@@ -2,6 +2,7 @@
 using Mango.Services.AuthApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using System.Net;
 
 namespace Mango.Services.AuthApi.Controllers
 {
@@ -16,55 +17,63 @@ namespace Mango.Services.AuthApi.Controllers
         }
         [HttpPost]
         [Route("register")]
-        public async Task<IActionResult> Register([FromBody]RegistrationRequestDto registrationDto)
+        public async Task<ResponseDto> Register([FromBody]RegistrationRequestDto registrationDto)
         {
             var resultMessage = await _authService.RegisterUser(registrationDto);
             if (!resultMessage.IsNullOrEmpty())
             {
-                var response = new ResponseDto
+                return new ResponseDto
                 {
-                    IsSuccess = false,
+                    StatusCode = HttpStatusCode.BadRequest,
                     ErrorMessage = resultMessage
                 };
-                return BadRequest(response);
             }
-            return Ok();
+            return new ResponseDto
+            {
+                StatusCode = HttpStatusCode.NoContent,
+            };
         }
 
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> Login(LoginRequestDto loginDto)
+        public async Task<ResponseDto> Login([FromBody] LoginRequestDto loginDto)
         {
-            var loginResponse = await _authService.UserLogin(loginDto);
+            LoginResponseDto loginResponseDto = await _authService.UserLogin(loginDto);
 
-            if(loginResponse.User == null)
+            if(loginResponseDto.User == null)
             {
-                var response = new ResponseDto
+                return new ResponseDto
                 {
-                    IsSuccess = false,
+                    StatusCode = HttpStatusCode.NotFound,
                     ErrorMessage = "Username or password is incorrect."
                 };
-                return BadRequest(response);
             }
-            return Ok(loginResponse);
+
+            return new ResponseDto
+            {
+                StatusCode = HttpStatusCode.OK,
+                Body = loginResponseDto
+            };
         }
 
         [HttpPost]
-        [Route("user-email/{email}/role/{role}")]
-        public async Task<IActionResult> AssignRole(string email, string role)
+        [Route("user-role")]
+        public async Task<ResponseDto> AssignRole([FromBody]RegistrationRequestDto registrationDto)
         {
-            var isAssignRoleSuccessful = await _authService.AssignRole(email, role.ToUpper());
+            var isAssignRoleSuccessful = await _authService.AssignRole(registrationDto.Email, registrationDto.Role?.ToUpper());
 
-            if (!isAssignRoleSuccessful)
+            if (isAssignRoleSuccessful)
             {
-                var response = new ResponseDto
+                return new ResponseDto
                 {
-                    IsSuccess = false,
-                    ErrorMessage = "Role assignment failed."
+                    StatusCode = HttpStatusCode.NoContent,
                 };
-                return BadRequest(response);
             }
-            return Ok();
+            return new ResponseDto
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                ErrorMessage = "Role assignment failed."
+            };
         }
     }
 }

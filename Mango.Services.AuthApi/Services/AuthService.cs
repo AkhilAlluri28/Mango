@@ -50,7 +50,9 @@ namespace Mango.Services.AuthApi.Services
         /// <inherit />
         public async Task<LoginResponseDto> UserLogin(LoginRequestDto loginRequestDto)
         {
-            var user = _dbContext.ApplicationUsers.FirstOrDefault(u => u.UserName.ToLower() == loginRequestDto.UserName.ToLower());
+            var users = _dbContext.ApplicationUsers.ToList();
+
+            var user = users.FirstOrDefault(u => u.UserName.ToLower() == loginRequestDto.UserName.ToLower());
         
             if(user == null)
             {

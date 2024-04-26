@@ -36,6 +36,26 @@
                             </ul>
                         </li>
                     </ul>
+                    <ul class="navbar-nav">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Welcome @User.Identity.Name</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Auth" asp-action="Logout">Logout</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Auth" asp-action="Login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Auth" asp-action="Register">Register</a>
+                            </li>
+                        }
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -49,7 +69,7 @@
 
     <footer class="footer text-muted">
         <div class="text-center">
-            <i class="bi bi-strava"></i>Sri sai veg restaurant
+            <i class="bi bi-strava">Sri sai veg restaurant</i>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

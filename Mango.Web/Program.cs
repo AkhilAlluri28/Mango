@@ -1,5 +1,7 @@
 using Mango.Web.Services;
 using Mango.Web.Services.IServices;
+using Mango.Web.Utilities;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,9 +10,24 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddHttpClient();
-builder.Services.AddHttpClient<IBaseService, BaseService>();
+builder.Services.AddHttpClient<ICouponService, CouponService>();
+builder.Services.AddHttpClient<IAuthService, AuthService>();
+
 builder.Services.AddScoped<IBaseService, BaseService>();
 builder.Services.AddScoped<ICouponService, CouponService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<ITokenProvider, TokenProvider>();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(15);
+        options.LoginPath = "/Auth/Login";
+        options.AccessDeniedPath = "/Auth/AccessDenied";
+    });
+
+StaticDetails.CouponApiBaseUrl = builder.Configuration.GetValue<string>("ServiceUrls:CouponApiBaseUrl");
+StaticDetails.AuthApiBaseUrl = builder.Configuration.GetValue<string>("ServiceUrls:AuthApiBaseUrl");
 
 var app = builder.Build();
 
@@ -26,7 +43,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

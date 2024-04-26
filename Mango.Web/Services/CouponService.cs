@@ -1,5 +1,6 @@
 ﻿using Mango.Web.Models;
 using Mango.Web.Services.IServices;
+using Mango.Web.Utilities;
 
 namespace Mango.Web.Services
 {
@@ -7,7 +8,6 @@ namespace Mango.Web.Services
     public class CouponService(IBaseService baseService) : ICouponService
     {
         private readonly IBaseService _baseService = baseService;
-        private const string CouponApiBaseUrl = "https://localhost:7001/api/coupons";
 
         /// <inherit/>
         public async Task<ResponseDto> GetAllCoupons()
@@ -15,7 +15,7 @@ namespace Mango.Web.Services
             RequestDto requestDto = new RequestDto()
             {
                 Method = HttpMethod.Get,
-                Url = CouponApiBaseUrl
+                Url = StaticDetails.CouponApiBaseUrl + "/api/coupons"
             };
             return await _baseService.SendAsync(requestDto);
         }
@@ -26,7 +26,7 @@ namespace Mango.Web.Services
             RequestDto requestDto = new RequestDto()
             {
                 Method = HttpMethod.Get,
-                Url = CouponApiBaseUrl + $"/{couponId}"
+                Url = StaticDetails.CouponApiBaseUrl + $"/api/coupons/{couponId}"
             };
             return await _baseService.SendAsync(requestDto);
         }
@@ -37,7 +37,7 @@ namespace Mango.Web.Services
             RequestDto requestDto = new RequestDto()
             {
                 Method = HttpMethod.Get,
-                Url = CouponApiBaseUrl + $"/by-code/{code}"
+                Url = StaticDetails.CouponApiBaseUrl + $"/api/coupons/by-code/{code}"
             };
             return await _baseService.SendAsync(requestDto);
         }
@@ -48,7 +48,7 @@ namespace Mango.Web.Services
             RequestDto requestDto = new RequestDto()
             {
                 Method = HttpMethod.Post,
-                Url = CouponApiBaseUrl,
+                Url = StaticDetails.CouponApiBaseUrl + "/api/coupons",
                 Body = couponDto
             };
             return await _baseService.SendAsync(requestDto);
@@ -60,7 +60,7 @@ namespace Mango.Web.Services
             RequestDto requestDto = new RequestDto()
             {
                 Method = HttpMethod.Put,
-                Url = CouponApiBaseUrl + $"/{couponDto.CouponId}",
+                Url = StaticDetails.CouponApiBaseUrl + $"/api/coupons/{couponDto.CouponId}",
                 Body = couponDto
             };
             return await _baseService.SendAsync(requestDto);
@@ -72,7 +72,7 @@ namespace Mango.Web.Services
             RequestDto requestDto = new RequestDto()
             {
                 Method = HttpMethod.Delete,
-                Url = CouponApiBaseUrl + $"/{couponId}"
+                Url = StaticDetails.CouponApiBaseUrl + $"/{couponId}"
             };
             return await _baseService.SendAsync(requestDto);
         }

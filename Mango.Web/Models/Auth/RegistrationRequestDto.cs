@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Mango.Services.AuthApi.Models
+namespace Mango.Web.Models.Auth
 {
     /// <summary>
     /// User registration Details.
@@ -23,16 +23,12 @@ namespace Mango.Services.AuthApi.Models
         /// User password
         /// </summary>
         [Required]
+        [MinLength(8)]
         public string Password { get; init; } = null!;
 
         /// <summary>
         /// User phone number
         /// </summary>
         public string? PhoneNumber { get; init; }
-
-        /// <summary>
-        /// User phone number
-        /// </summary>
-        public string? Role { get; init; }
     }
 }
