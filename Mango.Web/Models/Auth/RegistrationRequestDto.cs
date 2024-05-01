@@ -30,5 +30,10 @@ namespace Mango.Web.Models.Auth
         /// User phone number
         /// </summary>
         public string? PhoneNumber { get; init; }
+
+        /// <summary>
+        /// User phone number
+        /// </summary>
+        public string? Role { get; init; } = Utilities.StaticDetails.RoleCutomer;
     }
 }

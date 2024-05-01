@@ -29,7 +29,7 @@ namespace Mango.Services.CouponApi.Common
         {
             get
             {
-                return (int)StatusCode >= 200 || (int)StatusCode <= 299;
+                return (int)StatusCode >= 200 && (int)StatusCode <= 299;
             }
         }
     }

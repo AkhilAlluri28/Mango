@@ -11,19 +11,19 @@ namespace Mango.Web.Controllers
 
         public async Task<IActionResult> CouponIndex()
         {
-            IEnumerable<CouponDto> couponsList = Enumerable.Empty<CouponDto>();
             ResponseDto responseDto = await _couponService.GetAllCoupons();
-            if (responseDto.IsSuccess)
+            if (responseDto?.IsSuccess ?? false)
             {
-				couponsList = JsonConvert.DeserializeObject<List<CouponDto>>(Convert.ToString(responseDto.Body));
-                
+                IEnumerable<CouponDto> couponsList = JsonConvert.DeserializeObject<List<CouponDto>>(Convert.ToString(responseDto.Body));
+                return View(couponsList);
             }
             else
             {
-                TempData["error"] = responseDto.ErrorMessage;
+                TempData["error"] = responseDto?.ErrorMessage;
+                return RedirectToAction("Index", "Home");
             }
 
-            return View(couponsList);
+            
         }
 
         public IActionResult CreateCoupon()

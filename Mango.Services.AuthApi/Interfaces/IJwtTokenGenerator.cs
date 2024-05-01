@@ -8,7 +8,9 @@
         /// <summary>
         /// Generates Jwt token from application user info.
         /// </summary>
-        /// <returns>Jwt Token.</returns>
-        public string GenerateToken(ApplicationUser user);
+        /// <param name="user">User info</param>
+        /// <param name="roles">Roles of respective User</param>
+        /// <returns>Generated JWT token.</returns>
+        public string GenerateToken(ApplicationUser user, IEnumerable<string> roles);
     }
 }

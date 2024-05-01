@@ -33,8 +33,9 @@ namespace Mango.Web.Controllers
             else
             {
                 TempData["error"] = responseDto.ErrorMessage;
+                return RedirectToAction("Login");
             }
-            return RedirectToAction("CouponIndex", "Coupon");
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult Register()
@@ -52,6 +53,7 @@ namespace Mango.Web.Controllers
             else
             {
                 TempData["error"] = response.ErrorMessage;
+                return RedirectToAction("Register");
             }
             return RedirectToAction("Login");
         }
@@ -85,6 +87,9 @@ namespace Mango.Web.Controllers
                 string.Empty));
             identity.AddClaim(new Claim(ClaimTypes.Name,
                 token.Claims?.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Email)?.Value ??
+                string.Empty));
+            identity.AddClaim(new Claim(ClaimTypes.Role,
+                token.Claims?.FirstOrDefault(c => c.Type == "role")?.Value ??
                 string.Empty));
 
             ClaimsPrincipal principal = new ClaimsPrincipal(identity);

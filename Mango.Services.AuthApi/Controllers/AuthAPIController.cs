@@ -1,5 +1,6 @@
 ﻿using Mango.Services.AuthApi.Interfaces;
 using Mango.Services.AuthApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.Net;
@@ -26,6 +27,15 @@ namespace Mango.Services.AuthApi.Controllers
                 {
                     StatusCode = HttpStatusCode.BadRequest,
                     ErrorMessage = resultMessage
+                };
+            }
+            bool isAssignRoleSuccessful = await _authService.AssignRole(registrationDto.Email, registrationDto.Role ?? "CUSTOMER");
+            if (!isAssignRoleSuccessful)
+            {
+                return new ResponseDto
+                {
+                    StatusCode = HttpStatusCode.BadRequest,
+                    ErrorMessage = "Failed to assign role to this user."
                 };
             }
             return new ResponseDto

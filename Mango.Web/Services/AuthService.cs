@@ -17,7 +17,7 @@ namespace Mango.Web.Services
                 Method = HttpMethod.Post,
                 Body = registrationRequestDto
             };
-            return await _baseService.SendAsync(requestDto);
+            return await _baseService.SendAsync(requestDto, false);
         }
 
         public async Task<ResponseDto> LoginAsync(LoginRequestDto loginRequestDto)
@@ -28,7 +28,7 @@ namespace Mango.Web.Services
                 Method = HttpMethod.Post,
                 Body = loginRequestDto
             };
-            return await _baseService.SendAsync(requestDto);
+            return await _baseService.SendAsync(requestDto, false);
         }
 
         public async Task<ResponseDto> RegisterUserAsync(RegistrationRequestDto registrationRequestDto)
@@ -39,7 +39,7 @@ namespace Mango.Web.Services
                 Method = HttpMethod.Post,
                 Body = registrationRequestDto
             };
-            return await _baseService.SendAsync(requestDto);
+            return await _baseService.SendAsync(requestDto, false);
         }
     }
 }

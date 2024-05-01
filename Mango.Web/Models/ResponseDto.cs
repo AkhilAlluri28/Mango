@@ -29,7 +29,7 @@ namespace Mango.Web
         {
             get
             {
-                return (int)StatusCode >= 200 || (int)StatusCode <= 299;
+                return (int)StatusCode >= 200 && (int)StatusCode <= 299;
             }
         }
     }
