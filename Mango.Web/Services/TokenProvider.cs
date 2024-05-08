@@ -1,4 +1,4 @@
-﻿using Mango.Web.Services.IServices;
+﻿using Mango.Web.Services.Interfaces;
 using Mango.Web.Utilities;
 
 namespace Mango.Web.Services

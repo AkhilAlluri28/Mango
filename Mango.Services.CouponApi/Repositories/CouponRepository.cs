@@ -1,24 +1,25 @@
 ﻿using Mango.Services.CouponApi.Data;
 using Mango.Services.CouponApi.Interfaces;
 using Mango.Services.CouponApi.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Mango.Services.CouponApi.Repositories
 {
     ///<inherit />
     public class CouponRepository(AppDbContext db) : ICouponRepository
     {
-        private readonly AppDbContext _db = db;
+        private readonly AppDbContext _dbContext = db;
 
         ///<inherit />
         public IEnumerable<Coupon> GetAllCoupons()
         {
-            return _db.Coupons.ToList();
+            return _dbContext.Coupons.AsNoTracking().ToList();
         }
 
         ///<inherit />
         public Coupon? GetCouponById(int couponId)
         {
-            return _db.Coupons.FirstOrDefault(c => c.CouponId == couponId);
+            return _dbContext.Coupons.AsNoTracking().FirstOrDefault(c => c.CouponId == couponId);
         }
 
         /// <inherit />
@@ -26,31 +27,31 @@ namespace Mango.Services.CouponApi.Repositories
         {
             //return _db.Coupons.FirstOrDefault(c=> string.Equals(c.CouponCode, code, 
             //    StringComparison.OrdinalIgnoreCase));
-            return _db.Coupons.FirstOrDefault(c => c.CouponCode == code);
+            return _dbContext.Coupons.AsNoTracking().FirstOrDefault(c => c.CouponCode == code);
         }
 
         /// <inherit />
-        public void CreateCoupon(Coupon coupon)
+        public void Create(Coupon coupon)
         {
-            _db.Coupons.Add(coupon);
-            _db.SaveChanges();
+            _dbContext.Coupons.Add(coupon);
+            _dbContext.SaveChanges();
         }
 
         /// <inherit />
-        public void UpdateCoupon(Coupon coupon)
+        public void Update(Coupon coupon)
         {
-            _db.Coupons.Update(coupon);
-            _db.SaveChanges();
+            _dbContext.Coupons.Update(coupon);
+            _dbContext.SaveChanges();
         }
 
         /// <inherit />
-        public void DeleteCoupon(int couponId)
+        public void Delete(int couponId)
         {
-            Coupon? couponToRemove = _db.Coupons.FirstOrDefault(c => c.CouponId == couponId);
+            Coupon? couponToRemove = _dbContext.Coupons.AsNoTracking().FirstOrDefault(c => c.CouponId == couponId);
             if(couponToRemove != null)
             {
-                _db.Coupons.Remove(couponToRemove);
-                _db.SaveChanges();
+                _dbContext.Coupons.Remove(couponToRemove);
+                _dbContext.SaveChanges();
             }
         }
     }

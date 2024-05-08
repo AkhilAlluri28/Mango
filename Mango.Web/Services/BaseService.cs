@@ -1,5 +1,5 @@
 ﻿using Mango.Web.Models;
-using Mango.Web.Services.IServices;
+using Mango.Web.Services.Interfaces;
 using Newtonsoft.Json;
 using System.Text;
 using System.Net;

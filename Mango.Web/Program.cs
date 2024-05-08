@@ -1,5 +1,5 @@
 using Mango.Web.Services;
-using Mango.Web.Services.IServices;
+using Mango.Web.Services.Interfaces;
 using Mango.Web.Utilities;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
@@ -11,10 +11,12 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddHttpClient();
 builder.Services.AddHttpClient<ICouponService, CouponService>();
+builder.Services.AddHttpClient<IProductService, ProductService>();
 builder.Services.AddHttpClient<IAuthService, AuthService>();
 
 builder.Services.AddScoped<IBaseService, BaseService>();
 builder.Services.AddScoped<ICouponService, CouponService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ITokenProvider, TokenProvider>();
 
@@ -26,8 +28,11 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.AccessDeniedPath = "/Auth/AccessDenied";
     });
 
+StaticDetails.ProductApiBaseUrl = builder.Configuration.GetValue<string>("ServiceUrls:ProductApiBaseUrl");
 StaticDetails.CouponApiBaseUrl = builder.Configuration.GetValue<string>("ServiceUrls:CouponApiBaseUrl");
 StaticDetails.AuthApiBaseUrl = builder.Configuration.GetValue<string>("ServiceUrls:AuthApiBaseUrl");
+StaticDetails.ShoppingCartApiBaseUrl = builder.Configuration.GetValue<string>("ServiceUrls:ShoppingCartApiBaseUrl");
+StaticDetails.OrderApiBaseUrl = builder.Configuration.GetValue<string>("ServiceUrls:OrderApiBaseUrl");
 
 var app = builder.Build();
 

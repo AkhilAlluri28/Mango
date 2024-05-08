@@ -1,5 +1,5 @@
 ﻿using Mango.Web.Models;
-using Mango.Web.Services.IServices;
+using Mango.Web.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -11,7 +11,7 @@ namespace Mango.Web.Controllers
 
         public async Task<IActionResult> CouponIndex()
         {
-            ResponseDto responseDto = await _couponService.GetAllCoupons();
+            ResponseDto responseDto = await _couponService.GetAllCouponsAsync();
             if (responseDto?.IsSuccess ?? false)
             {
                 IEnumerable<CouponDto> couponsList = JsonConvert.DeserializeObject<List<CouponDto>>(Convert.ToString(responseDto.Body));
@@ -22,18 +22,16 @@ namespace Mango.Web.Controllers
                 TempData["error"] = responseDto?.ErrorMessage;
                 return RedirectToAction("Index", "Home");
             }
-
-            
         }
 
-        public IActionResult CreateCoupon()
+        public IActionResult CouponCreate()
         {
             return View();
         }
 
-        public async Task<IActionResult> SubmitCoupon(CouponDto coupon)
+        public async Task<IActionResult> CouponSubmit(CouponDto coupon)
         {
-            ResponseDto responseDto = await _couponService.CreateCoupon(coupon);
+            ResponseDto responseDto = await _couponService.CreateAsync(coupon);
             if (responseDto.IsSuccess)
             {
                 TempData["success"] = "Created!";
@@ -43,12 +41,12 @@ namespace Mango.Web.Controllers
             {
                 TempData["error"] = responseDto.ErrorMessage;
             }
-            return RedirectToAction(nameof(CreateCoupon));
+            return RedirectToAction(nameof(CouponCreate));
         }
 
-        public async Task<IActionResult> DeleteCoupon(int couponId)
+        public async Task<IActionResult> CouponDelete(int couponId)
         {
-            ResponseDto responseDto = await _couponService.DeleteCoupon(couponId);
+            ResponseDto responseDto = await _couponService.DeleteAsync(couponId);
             if (responseDto.IsSuccess)
             {
                 TempData["success"] = "Deleted!";

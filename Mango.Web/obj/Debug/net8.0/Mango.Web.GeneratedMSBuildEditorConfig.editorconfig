@@ -26,12 +26,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/saisr/OneDrive/Documents/Projects/NetCore_MicroServices/Mango/Mango.Web/Views/Coupon/CouponIndex.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cG9uXENvdXBvbkluZGV4LmNzaHRtbA==
+[C:/Users/saisr/OneDrive/Documents/Projects/NetCore_MicroServices/Mango/Mango.Web/Views/Coupon/CouponCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cG9uXENvdXBvbkNyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/saisr/OneDrive/Documents/Projects/NetCore_MicroServices/Mango/Mango.Web/Views/Coupon/CreateCoupon.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cG9uXENyZWF0ZUNvdXBvbi5jc2h0bWw=
+[C:/Users/saisr/OneDrive/Documents/Projects/NetCore_MicroServices/Mango/Mango.Web/Views/Coupon/CouponIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cG9uXENvdXBvbkluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/saisr/OneDrive/Documents/Projects/NetCore_MicroServices/Mango/Mango.Web/Views/Home/Index.cshtml]
@@ -40,6 +40,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/saisr/OneDrive/Documents/Projects/NetCore_MicroServices/Mango/Mango.Web/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/saisr/OneDrive/Documents/Projects/NetCore_MicroServices/Mango/Mango.Web/Views/Product/ProductCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxQcm9kdWN0Q3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/saisr/OneDrive/Documents/Projects/NetCore_MicroServices/Mango/Mango.Web/Views/Product/ProductEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxQcm9kdWN0RWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/saisr/OneDrive/Documents/Projects/NetCore_MicroServices/Mango/Mango.Web/Views/Product/ProductIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxQcm9kdWN0SW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/saisr/OneDrive/Documents/Projects/NetCore_MicroServices/Mango/Mango.Web/Views/Shared/Error.cshtml]

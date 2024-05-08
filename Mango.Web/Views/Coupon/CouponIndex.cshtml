@@ -12,7 +12,7 @@
 			<div class="col-6">
 			</div>
 			<div class="col-6 text-end">
-				<a class="btn btn-outline-primary" asp-action="CreateCoupon"><i class="bi bi-plus-square"></i> Create New Coupon</a>
+				<a class="btn btn-outline-primary" asp-action="CouponCreate"><i class="bi bi-plus-square"></i> Create New Coupon</a>
 
 			</div>
 		</div>
@@ -45,7 +45,7 @@
 							@(coupon.MinAmount.ToString("c"))
 						</td>
 						<td>
-							<a asp-action="DeleteCoupon" asp-route-couponId="@coupon.CouponId" class="btn btn-danger">
+							<a asp-action="CouponDelete" asp-route-couponId="@coupon.CouponId" class="btn btn-danger">
 								<i class="bi bi-trash"></i>
 							</a>
 						</td>

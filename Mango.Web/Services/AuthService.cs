@@ -1,6 +1,6 @@
 ﻿using Mango.Web.Models;
 using Mango.Web.Models.Auth;
-using Mango.Web.Services.IServices;
+using Mango.Web.Services.Interfaces;
 using Mango.Web.Utilities;
 
 namespace Mango.Web.Services
@@ -9,7 +9,7 @@ namespace Mango.Web.Services
     public class AuthService(IBaseService baseService) : IAuthService
     {
         private readonly IBaseService _baseService = baseService;
-        public async Task<ResponseDto> AssignRole(RegistrationRequestDto registrationRequestDto)
+        public async Task<ResponseDto> AssignRoleAsync(RegistrationRequestDto registrationRequestDto)
         {
             var requestDto = new RequestDto
             {

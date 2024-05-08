@@ -10,6 +10,7 @@ C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Ser
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\bin\Debug\net8.0\Azure.Core.dll
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\bin\Debug\net8.0\Azure.Identity.dll
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\bin\Debug\net8.0\Humanizer.dll
+C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
@@ -37,6 +38,7 @@ C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Ser
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\bin\Debug\net8.0\System.ClientModel.dll
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\bin\Debug\net8.0\System.CodeDom.dll
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\bin\Debug\net8.0\System.Composition.AttributedModel.dll
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\bin\Debug\net8.0\System.Composition.Convention.dll
@@ -137,5 +139,3 @@ C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Ser
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\obj\Debug\net8.0\Mango.Services.CouponApi.pdb
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\obj\Debug\net8.0\Mango.Services.CouponApi.genruntimeconfig.cache
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\obj\Debug\net8.0\ref\Mango.Services.CouponApi.dll
-C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CouponApi\bin\Debug\net8.0\System.ClientModel.dll

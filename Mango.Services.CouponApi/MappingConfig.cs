@@ -9,8 +9,7 @@ public class MappingConfig
     {
         return new MapperConfiguration(config =>
         {
-            config.CreateMap<Coupon, CouponDto>();
-            config.CreateMap<CouponDto, Coupon>();
+            config.CreateMap<Coupon, CouponDto>().ReverseMap();
         });
     }
 }

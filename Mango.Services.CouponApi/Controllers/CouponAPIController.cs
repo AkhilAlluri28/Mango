@@ -54,7 +54,7 @@ namespace Mango.Services.CouponApi.Controllers
         public ResponseDto CreateCoupon([FromBody] CouponDto couponDto)
         {
             Coupon couponToCreate = _mapper.Map<Coupon>(couponDto);
-            _couponRepository.CreateCoupon(couponToCreate);
+            _couponRepository.Create(couponToCreate);
             return new ResponseDto
             {
                 StatusCode = HttpStatusCode.NoContent
@@ -71,7 +71,7 @@ namespace Mango.Services.CouponApi.Controllers
             try
             {
                 Coupon couponToUpdate = _mapper.Map<Coupon>(couponDto);
-                _couponRepository.UpdateCoupon(couponToUpdate);
+                _couponRepository.Update(couponToUpdate);
                 return new ResponseDto
                 {
                     StatusCode = HttpStatusCode.NoContent,
@@ -94,7 +94,7 @@ namespace Mango.Services.CouponApi.Controllers
         {
             try
             {
-                _couponRepository.DeleteCoupon(couponId);
+                _couponRepository.Delete(couponId);
 
                 return new ResponseDto
                 {

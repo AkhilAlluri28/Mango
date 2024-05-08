@@ -1,5 +1,5 @@
 ﻿using Mango.Web.Models;
-using Mango.Web.Services.IServices;
+using Mango.Web.Services.Interfaces;
 using Mango.Web.Utilities;
 
 namespace Mango.Web.Services
@@ -10,7 +10,7 @@ namespace Mango.Web.Services
         private readonly IBaseService _baseService = baseService;
 
         /// <inherit/>
-        public async Task<ResponseDto> GetAllCoupons()
+        public async Task<ResponseDto> GetAllCouponsAsync()
         {
             RequestDto requestDto = new RequestDto()
             {
@@ -21,7 +21,7 @@ namespace Mango.Web.Services
         }
 
         /// <inherit/>
-        public async Task<ResponseDto> GetCouponById(int couponId)
+        public async Task<ResponseDto> GetCouponByIdAsync(int couponId)
         {
             RequestDto requestDto = new RequestDto()
             {
@@ -32,7 +32,7 @@ namespace Mango.Web.Services
         }
 
         /// <inherit/>
-        public async Task<ResponseDto> GetCouponByCode(string code)
+        public async Task<ResponseDto> GetCouponByCodeAsync(string code)
         {
             RequestDto requestDto = new RequestDto()
             {
@@ -43,7 +43,7 @@ namespace Mango.Web.Services
         }
 
         /// <inherit/>
-        public async Task<ResponseDto> CreateCoupon(CouponDto couponDto)
+        public async Task<ResponseDto> CreateAsync(CouponDto couponDto)
         {
             RequestDto requestDto = new RequestDto()
             {
@@ -55,7 +55,7 @@ namespace Mango.Web.Services
         }
 
         /// <inherit/>
-        public async Task<ResponseDto> UpdateCoupon(CouponDto couponDto)
+        public async Task<ResponseDto> UpdateAsync(CouponDto couponDto)
         {
             RequestDto requestDto = new RequestDto()
             {
@@ -67,12 +67,12 @@ namespace Mango.Web.Services
         }
 
         /// <inherit/>
-        public async Task<ResponseDto> DeleteCoupon(int couponId)
+        public async Task<ResponseDto> DeleteAsync(int couponId)
         {
             RequestDto requestDto = new RequestDto()
             {
                 Method = HttpMethod.Delete,
-                Url = StaticDetails.CouponApiBaseUrl + $"/{couponId}"
+                Url = StaticDetails.CouponApiBaseUrl + $"/api/coupons/{couponId}"
             };
             return await _baseService.SendAsync(requestDto);
         }

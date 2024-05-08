@@ -8,6 +8,9 @@ namespace Mango.Web.Utilities
         public static string RoleAdmin = Role.ADMIN.ToString();
         public static string RoleCutomer = Role.CUSTOMER.ToString();
         public static string CouponApiBaseUrl { get; set; } = null!;
+        public static string ProductApiBaseUrl { get; set; } = null!;
         public static string AuthApiBaseUrl { get; set; } = null!;
+        public static string ShoppingCartApiBaseUrl { get; set; } = null!;
+        public static string OrderApiBaseUrl { get; set; } = null!;
     }
 }

@@ -7,7 +7,6 @@ namespace Mango.Services.CouponApi.Interfaces
     /// </summary>
     public interface ICouponRepository
     {
-
         /// <summary>
         /// Retrieves all the coupons.
         /// </summary>
@@ -32,18 +31,18 @@ namespace Mango.Services.CouponApi.Interfaces
         /// Creates coupon.
         /// </summary>
         /// <param name="coupon"></param>
-        public void CreateCoupon(Coupon coupon);
+        public void Create(Coupon coupon);
 
         /// <summary>
         /// Updates coupon.
         /// </summary>
         /// <param name="coupon"></param>
-        public void UpdateCoupon(Coupon coupon);
+        public void Update(Coupon coupon);
 
         /// <summary>
         /// Deletes Coupon of given id.
         /// </summary>
         /// <param name="couponId">Unique identifier of coupon.</param>
-        public void DeleteCoupon(int couponId);
+        public void Delete(int couponId);
     }
 }

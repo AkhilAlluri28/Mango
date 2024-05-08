@@ -1,6 +1,6 @@
 ﻿using Mango.Web.Models.Auth;
 using Mango.Web.Services;
-using Mango.Web.Services.IServices;
+using Mango.Web.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
