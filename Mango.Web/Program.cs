@@ -31,7 +31,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 StaticDetails.ProductApiBaseUrl = builder.Configuration.GetValue<string>("ServiceUrls:ProductApiBaseUrl");
 StaticDetails.CouponApiBaseUrl = builder.Configuration.GetValue<string>("ServiceUrls:CouponApiBaseUrl");
 StaticDetails.AuthApiBaseUrl = builder.Configuration.GetValue<string>("ServiceUrls:AuthApiBaseUrl");
-StaticDetails.ShoppingCartApiBaseUrl = builder.Configuration.GetValue<string>("ServiceUrls:ShoppingCartApiBaseUrl");
+StaticDetails.CartApiBaseUrl = builder.Configuration.GetValue<string>("ServiceUrls:CartApiBaseUrl");
 StaticDetails.OrderApiBaseUrl = builder.Configuration.GetValue<string>("ServiceUrls:OrderApiBaseUrl");
 
 var app = builder.Build();
