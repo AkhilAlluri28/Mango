@@ -11,11 +11,12 @@ namespace Mango.Services.CartApi.Controllers
 {
     [Route("api/cart")]
     [ApiController]
-    public class CartApiController(AppDbContext appDbContext, IMapper mapper, IProductService productService) : ControllerBase
+    public class CartApiController(AppDbContext appDbContext, IMapper mapper, IProductService productService, ICouponService couponService) : ControllerBase
     {
         private readonly AppDbContext _appDbContext = appDbContext;
         private readonly IMapper _mapper = mapper;
         public readonly IProductService _productService = productService;
+        public readonly ICouponService _couponService = couponService;
 
         [HttpPost]
         [Route("{userId}")]
@@ -49,6 +50,17 @@ namespace Mango.Services.CartApi.Controllers
                         cartDto.CartHeader.CartTotal += item.Count * item.Product.Price;
                 }
 
+                // apply copon discount if any
+                if (!string.IsNullOrWhiteSpace(cartDto.CartHeader.CouponCode))
+                {
+                    CouponDto couponDto = await _couponService.GetCouponByCode(cartDto.CartHeader.CouponCode);
+                    if(CanCouponApplicable(cartDto, couponDto.MinAmount))
+                    {
+                        cartDto.CartHeader.CartTotal -= couponDto.DiscountAmount;
+                        cartDto.CartHeader.Discount = couponDto.DiscountAmount;
+                    }
+                }
+
                 return new ResponseDto { StatusCode = HttpStatusCode.OK, Body = cartDto };
             }
             catch (Exception ex)
@@ -61,7 +73,7 @@ namespace Mango.Services.CartApi.Controllers
         [Route("cart-upsert")]
         public async Task<ResponseDto> CartUpsert([FromBody] CartDto cartDto)
         {
-            if (cartDto is null)
+            if (!IsModelValid(cartDto))
                 return new ResponseDto { ErrorMessage = "Payload is empty", StatusCode = HttpStatusCode.BadRequest };
 
             try
@@ -139,6 +151,39 @@ namespace Mango.Services.CartApi.Controllers
             }
 
             return new ResponseDto { StatusCode = HttpStatusCode.NoContent };
+        }
+
+        [HttpPost]
+        [Route("apply-coupon")]
+        public async Task<ResponseDto> ApplyCoupon([FromBody] CartDto cartDto)
+        {
+            if (!IsModelValid(cartDto))
+                return new ResponseDto { ErrorMessage = "Payload is empty", StatusCode = HttpStatusCode.BadRequest };
+
+            try
+            {
+                var cartHeaderFromDb = await _appDbContext.CartHeaders.AsNoTracking().FirstAsync(c =>
+                                                                               c.UserId == cartDto.CartHeader.UserId);
+                cartHeaderFromDb.CouponCode = cartDto.CartHeader.CouponCode;
+                _appDbContext.CartHeaders.Update(cartHeaderFromDb);
+                _appDbContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return new ResponseDto { ErrorMessage = ex.Message, StatusCode = HttpStatusCode.BadRequest };
+            }
+
+            return new ResponseDto { StatusCode = HttpStatusCode.OK, Body = true };
+        }
+
+        private static bool IsModelValid(CartDto cartDto)
+        {
+            return cartDto?.CartHeader is not null;
+        }
+
+        private static bool CanCouponApplicable(CartDto cartDto, decimal minAmount)
+        {
+            return cartDto.CartHeader.CartTotal > minAmount;
         }
     }
 }

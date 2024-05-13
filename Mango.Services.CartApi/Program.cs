@@ -24,6 +24,8 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddHttpClient("Product", options =>
                     options.BaseAddress = new Uri(builder.Configuration["ServiceUrls:ProductApi"]));
+builder.Services.AddHttpClient("Coupon", options => 
+                    options.BaseAddress = new Uri(builder.Configuration["ServiceUrls:CouponApi"]));
 
 //3. Swagger registration
 builder.Services.AddControllers();
@@ -36,6 +38,7 @@ builder.AddAppAuthentication();
 
 // 5. Add services
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ICouponService, CouponService>();
 
 var app = builder.Build();
 
