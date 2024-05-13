@@ -139,3 +139,4 @@ C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Ser
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CartApi\obj\Debug\net8.0\Mango.Services.CartApi.pdb
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CartApi\obj\Debug\net8.0\Mango.Services.CartApi.genruntimeconfig.cache
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CartApi\obj\Debug\net8.0\ref\Mango.Services.CartApi.dll
+C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Services.CartApi\bin\Debug\net8.0\Newtonsoft.Json.dll

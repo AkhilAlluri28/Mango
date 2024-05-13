@@ -2,7 +2,10 @@ using AutoMapper;
 using Mango.Services.CartApi;
 using Mango.Services.CartApi.Data;
 using Mango.Services.CartApi.Extensions;
+using Mango.Services.CartApi.Services;
+using Mango.Services.CartApi.Services.IServices;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +22,9 @@ IMapper mapper = MappingConfig.RegisterMapping().CreateMapper();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+builder.Services.AddHttpClient("Product", options =>
+                    options.BaseAddress = new Uri(builder.Configuration["ServiceUrls:ProductApi"]));
+
 //3. Swagger registration
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -27,6 +33,9 @@ builder.Services.AddSwaggerGen();
 
 //4. Authentication registration using extension method.
 builder.AddAppAuthentication();
+
+// 5. Add services
+builder.Services.AddScoped<IProductService, ProductService>();
 
 var app = builder.Build();
 
