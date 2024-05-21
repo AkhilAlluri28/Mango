@@ -6,6 +6,7 @@ C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Web
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Web\bin\Debug\net8.0\Mango.Web.runtimeconfig.json
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Web\bin\Debug\net8.0\Mango.Web.dll
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Web\bin\Debug\net8.0\Mango.Web.pdb
+C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Web\bin\Debug\net8.0\IdentityModel.dll
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Web\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Web\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Users\saisr\OneDrive\Documents\Projects\NetCore_MicroServices\Mango\Mango.Web\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll

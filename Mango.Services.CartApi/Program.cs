@@ -4,6 +4,7 @@ using Mango.Services.CartApi.Data;
 using Mango.Services.CartApi.Extensions;
 using Mango.Services.CartApi.Services;
 using Mango.Services.CartApi.Services.IServices;
+using Mango.Services.CartApi.Utility;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -22,10 +23,16 @@ IMapper mapper = MappingConfig.RegisterMapping().CreateMapper();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<ApiToApiHttpCallAuthenticationHandler>();
+
 builder.Services.AddHttpClient("Product", options =>
-                    options.BaseAddress = new Uri(builder.Configuration["ServiceUrls:ProductApi"]));
+                    options.BaseAddress = new Uri(builder.Configuration["ServiceUrls:ProductApi"]))
+    .AddHttpMessageHandler<ApiToApiHttpCallAuthenticationHandler>();
+
 builder.Services.AddHttpClient("Coupon", options => 
-                    options.BaseAddress = new Uri(builder.Configuration["ServiceUrls:CouponApi"]));
+                    options.BaseAddress = new Uri(builder.Configuration["ServiceUrls:CouponApi"]))
+    .AddHttpMessageHandler<ApiToApiHttpCallAuthenticationHandler>();
 
 //3. Swagger registration
 builder.Services.AddControllers();

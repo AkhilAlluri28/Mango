@@ -18,8 +18,8 @@ namespace Mango.Services.CartApi.Controllers
         public readonly IProductService _productService = productService;
         public readonly ICouponService _couponService = couponService;
 
-        [HttpPost]
-        [Route("{userId}")]
+        [HttpGet]
+        [Route("by-userId/{userId}")]
         public async Task<ResponseDto> GetCart(string userId)
         {
             try
@@ -121,9 +121,9 @@ namespace Mango.Services.CartApi.Controllers
             return new ResponseDto { StatusCode = HttpStatusCode.OK, Body = cartDto };
         }
 
-        [HttpPost]
-        [Route("remove-cart")]
-        public async Task<ResponseDto> CartRemove([FromBody] int cartDetailsId)
+        [HttpDelete]
+        [Route("remove-cart/{cartDetailsId:int}")]
+        public async Task<ResponseDto> CartRemove(int cartDetailsId)
         {
             try
             {
@@ -141,8 +141,8 @@ namespace Mango.Services.CartApi.Controllers
                                                                             x.CartHeaderId == cartDetailsFromDb.CartHeaderId);
 
                         _appDbContext.CartHeaders.Remove(cartHeaderToRemoveFromDb);
-                        await _appDbContext.SaveChangesAsync();
                     }
+                    await _appDbContext.SaveChangesAsync();
                 }
             }
             catch (Exception ex)
