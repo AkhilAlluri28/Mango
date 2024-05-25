@@ -11,6 +11,7 @@
           "AutoMapper": "12.0.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.0",
           "Azure.Identity": "1.11.2",
+          "Mango.MessageBus": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.4",
           "Microsoft.Data.SqlClient": "5.1.3",
           "Microsoft.EntityFrameworkCore": "8.0.1",
@@ -66,6 +67,19 @@
           }
         }
       },
+      "Azure.Core.Amqp/1.3.0": {
+        "dependencies": {
+          "Microsoft.Azure.Amqp": "2.6.5",
+          "System.Memory": "4.5.4",
+          "System.Memory.Data": "1.0.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Azure.Core.Amqp.dll": {
+            "assemblyVersion": "1.3.0.0",
+            "fileVersion": "1.300.23.15207"
+          }
+        }
+      },
       "Azure.Identity/1.11.2": {
         "dependencies": {
           "Azure.Core": "1.38.0",
@@ -80,6 +94,21 @@
           "lib/netstandard2.0/Azure.Identity.dll": {
             "assemblyVersion": "1.11.2.0",
             "fileVersion": "1.1100.224.21902"
+          }
+        }
+      },
+      "Azure.Messaging.ServiceBus/7.17.5": {
+        "dependencies": {
+          "Azure.Core": "1.38.0",
+          "Azure.Core.Amqp": "1.3.0",
+          "Microsoft.Azure.Amqp": "2.6.5",
+          "Microsoft.Bcl.AsyncInterfaces": "6.0.0",
+          "System.Memory.Data": "1.0.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Azure.Messaging.ServiceBus.dll": {
+            "assemblyVersion": "7.17.5.0",
+            "fileVersion": "7.1700.524.20901"
           }
         }
       },
@@ -99,6 +128,14 @@
           "lib/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
             "assemblyVersion": "8.0.4.0",
             "fileVersion": "8.0.424.17014"
+          }
+        }
+      },
+      "Microsoft.Azure.Amqp/2.6.5": {
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Azure.Amqp.dll": {
+            "assemblyVersion": "2.4.0.0",
+            "fileVersion": "2.6.5.0"
           }
         }
       },
@@ -941,6 +978,15 @@
             "fileVersion": "6.0.21.52210"
           }
         }
+      },
+      "Mango.MessageBus/1.0.0": {
+        "dependencies": {
+          "Azure.Messaging.ServiceBus": "7.17.5",
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "runtime": {
+          "Mango.MessageBus.dll": {}
+        }
       }
     }
   },
@@ -971,12 +1017,26 @@
       "path": "azure.core/1.38.0",
       "hashPath": "azure.core.1.38.0.nupkg.sha512"
     },
+    "Azure.Core.Amqp/1.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6GG4gyFkAuHtpBVkvj0wE5+lCM+ttsZlIWAipBkI+jlCUlTgrTiNUROBFnb8xuKoymVDw9Tf1W8RoKqgbd71lg==",
+      "path": "azure.core.amqp/1.3.0",
+      "hashPath": "azure.core.amqp.1.3.0.nupkg.sha512"
+    },
     "Azure.Identity/1.11.2": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-mihECA1msfwdjTPXHwK9N3n4ln8jMB0DuT0r2caDGPriRT1vca4/Jgmo6FmFZPo8RQsQt1fVn1Gxv5WqkyHVeA==",
       "path": "azure.identity/1.11.2",
       "hashPath": "azure.identity.1.11.2.nupkg.sha512"
+    },
+    "Azure.Messaging.ServiceBus/7.17.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3Q0idVrwmQfraJBCkc67Kh4Hitt2uQQ3KMBCWBtkyBMUYSCRzflDlKo6Dc7Xg1pDNd7+OnQRkoNypCEqz9n3rA==",
+      "path": "azure.messaging.servicebus/7.17.5",
+      "hashPath": "azure.messaging.servicebus.7.17.5.nupkg.sha512"
     },
     "Humanizer.Core/2.14.1": {
       "type": "package",
@@ -991,6 +1051,13 @@
       "sha512": "sha512-tHnHRBgQyiVNZJ8PksNinLdGOsE8+tFFv3E9QEtmwO+iyTHRvg4bJ4X0XZG1u9KxXMTJuAdeIWKWYr2rTLEHqQ==",
       "path": "microsoft.aspnetcore.authentication.jwtbearer/8.0.4",
       "hashPath": "microsoft.aspnetcore.authentication.jwtbearer.8.0.4.nupkg.sha512"
+    },
+    "Microsoft.Azure.Amqp/2.6.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Hx0XrpkASCfZbwKqr5bc/5DveYZyhh+737AdUh0jq6nXFO+LbhSMOS3KHI4DtoHDTWR1WFycdxNJdByCZ/bzXQ==",
+      "path": "microsoft.azure.amqp/2.6.5",
+      "hashPath": "microsoft.azure.amqp.2.6.5.nupkg.sha512"
     },
     "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
       "type": "package",
@@ -1523,6 +1590,11 @@
       "sha512": "sha512-IXoJOXIqc39AIe+CIR7koBtRGMiCt/LPM3lI+PELtDIy9XdyeSrwXFdWV9dzJ2Awl0paLWUaknLxFQ5HpHZUog==",
       "path": "system.windows.extensions/6.0.0",
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
+    },
+    "Mango.MessageBus/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Mango.MessageBus;
 using Mango.Services.CartApi.Data;
 using Mango.Services.CartApi.Models;
 using Mango.Services.CartApi.Models.Dto;
@@ -11,12 +12,19 @@ namespace Mango.Services.CartApi.Controllers
 {
     [Route("api/cart")]
     [ApiController]
-    public class CartApiController(AppDbContext appDbContext, IMapper mapper, IProductService productService, ICouponService couponService) : ControllerBase
+    public class CartApiController(AppDbContext appDbContext,
+                                    IMapper mapper, 
+                                    IProductService productService,
+                                    ICouponService couponService,
+                                    IMessageBus messageBus,
+                                    IConfiguration configuration) : ControllerBase
     {
         private readonly AppDbContext _appDbContext = appDbContext;
         private readonly IMapper _mapper = mapper;
-        public readonly IProductService _productService = productService;
-        public readonly ICouponService _couponService = couponService;
+        private readonly IProductService _productService = productService;
+        private readonly ICouponService _couponService = couponService;
+        private readonly IMessageBus _messageBus = messageBus;
+        private readonly IConfiguration _configuration = configuration;
 
         [HttpGet]
         [Route("by-userId/{userId}")]
@@ -167,6 +175,26 @@ namespace Mango.Services.CartApi.Controllers
                 cartHeaderFromDb.CouponCode = cartDto.CartHeader.CouponCode;
                 _appDbContext.CartHeaders.Update(cartHeaderFromDb);
                 _appDbContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return new ResponseDto { ErrorMessage = ex.Message, StatusCode = HttpStatusCode.BadRequest };
+            }
+
+            return new ResponseDto { StatusCode = HttpStatusCode.OK, Body = true };
+        }
+
+        [HttpPost]
+        [Route("email-cart")]
+        public async Task<ResponseDto> EmailCart([FromBody] CartDto cartDto)
+        {
+            if (!IsModelValid(cartDto))
+                return new ResponseDto { ErrorMessage = "Payload is empty", StatusCode = HttpStatusCode.BadRequest };
+
+            try
+            {
+                string queue_topic_name = _configuration.GetValue<string>("TopicAndQueueNames:EmailShoppingCart");
+                await _messageBus.PublishMessage(cartDto, queue_topic_name);
             }
             catch (Exception ex)
             {

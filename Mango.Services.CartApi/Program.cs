@@ -1,4 +1,5 @@
 using AutoMapper;
+using Mango.MessageBus;
 using Mango.Services.CartApi;
 using Mango.Services.CartApi.Data;
 using Mango.Services.CartApi.Extensions;
@@ -6,7 +7,6 @@ using Mango.Services.CartApi.Services;
 using Mango.Services.CartApi.Services.IServices;
 using Mango.Services.CartApi.Utility;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,6 +46,7 @@ builder.AddAppAuthentication();
 // 5. Add services
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICouponService, CouponService>();
+builder.Services.AddScoped<IMessageBus, MessageBus>();
 
 var app = builder.Build();
 

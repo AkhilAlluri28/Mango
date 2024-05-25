@@ -29,5 +29,25 @@
         /// CartTotal calculated on-demand
         /// </summary>
         public decimal CartTotal { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string? FirstName { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string? LastName { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string? Phone { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string? Email { get; set; }
     }
 }
