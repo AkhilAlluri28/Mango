@@ -4,22 +4,22 @@ namespace Mango.Web.Models
 {
     public record ProductDto
     {
-        public int ProductId { get; init; }
+        public int ProductId { get; set; }
 
         [Required]
-        public string Name { get; init; } = null!;
+        public string Name { get; set; } = null!;
 
 		[Required]
         [Range(0, 1000)]
-		public decimal Price { get; init; }
+		public decimal Price { get; set; }
 
-		public string Description { get; init; } = null!;
+		public string Description { get; set; } = null!;
 
-		public string CategoryName { get; init; } = null!;
+		public string CategoryName { get; set; } = null!;
 
-		public string ImageUrl { get; init; } = null!;
+		public string ImageUrl { get; set; }
 
         [Range(1, 1000)]
-        public int Quantity { get; init; } = 1;
+        public int Quantity { get; set; } = 1;
 	}
 }

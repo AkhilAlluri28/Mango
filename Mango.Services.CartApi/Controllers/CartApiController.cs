@@ -117,6 +117,8 @@ namespace Mango.Services.CartApi.Controllers
                         cartDto.CartDetails.First().Count += cartDetailsFromDb.Count;
                         cartDto.CartDetails.First().CartHeaderId = cartDetailsFromDb.CartHeaderId;
                         cartDto.CartDetails.First().CartDetailsId = cartDetailsFromDb.CartDetailsId;
+
+                        _appDbContext.CartDetails.Update(_mapper.Map<CartDetails>(cartDto.CartDetails.First()));
                         await _appDbContext.SaveChangesAsync();
                     }
                 }
@@ -193,7 +195,7 @@ namespace Mango.Services.CartApi.Controllers
 
             try
             {
-                string queue_topic_name = _configuration.GetValue<string>("TopicAndQueueNames:EmailShoppingCart");
+                string queue_topic_name = _configuration.GetValue<string>("TopicAndQueueNames:EmailShoppingCartQueue");
                 await _messageBus.PublishMessage(cartDto, queue_topic_name);
             }
             catch (Exception ex)

@@ -32,6 +32,10 @@ namespace Mango.Web.Controllers
 
         public async Task<IActionResult> ProductCreateSubmit(ProductDto product)
         {
+            if (string.IsNullOrWhiteSpace(product.ImageUrl))
+            {
+                product.ImageUrl = "https://placehold.co/600x400";
+            }
             ResponseDto responseDto = await _productService.CreateAsync(product);
             if (responseDto.IsSuccess)
             {

@@ -97,7 +97,7 @@
                     <button type="submit" asp-action="EmailCart" class="btn btn-outline-danger form-control">Email Cart</button>
                 </div>
                 <div class="col-6 col-md-3 offset-md-6">
-                    <button class="btn btn-success form-control" @(Model.CartHeader == null ? "disabled=\"disabled\"" : "")>Coming soon!</button>
+                    <button class="btn btn-success form-control" asp-action="Checkout">Check-out</button>
                 </div>
             </div>
         </div>
