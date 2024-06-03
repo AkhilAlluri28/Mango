@@ -1,0 +1,44 @@
+{
+  //"ProductApiBaseUrl": "https://localhost:7000",
+  //"CouponApiBaseUrl": "https://localhost:7001",
+  //"AuthApiBaseUrl": "https://localhost:7002",
+  //"CartApiBaseUrl": "https://localhost:7003",
+  //"OrderApiBaseUrl": "https://localhost:7004",
+  "Routes": [
+    // Similar configuration needed for all other end-points.
+    {
+      "DownstreamPathTemplate": "/api/products/",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7000
+        }
+      ],
+      "UpstreamPathTemplate": "/api/products/",
+      "UpstreamHttpMethod": [ "Get" ]
+      //No Authentication for this route
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "Bearer"
+      //}
+    },
+    {
+      "DownstreamPathTemplate": "/api/products/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7000
+        }
+      ],
+      "UpstreamPathTemplate": "/api/products/{id}",
+      "UpstreamHttpMethod": [ "DELETE" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
+      }
+    }
+  ],
+  "GlobalSettings": {
+    "BaseUrl": "https://localhost:7777"
+  }
+}
